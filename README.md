@@ -5,7 +5,7 @@ works and how to utilize $q.
 
 # The tests
 
-You will need to have nodejs installed and some libraries installed with npm  globally
+You will need to have nodejs installed and the karma command line executable installed with npm globally
 
 1. ensure node installed and available in your path.
 2. npm i -g karma-cli
