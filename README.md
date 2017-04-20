@@ -40,16 +40,27 @@ One often reads that this is an anti-pattern because the defer() is creating a n
     $http.get('someUrl')
       .then(
         function(response){
-          p.resolve(response.data)
+          if(response.data === 'xyz') {
+            p.resolve(response.data);
+          } else {
+            p.reject('not xyz!')
+          }
         },
         function(err){
-          p.reject(err.status)
+          if(err.status !== 500){
+            p.resolve('123')
+          } else {
+            p.reject(err.status);
+          }
         }
       )
     return p.promise;
 
+
+Resolves are an input into the next _then_'s success function. Rejects are an input into the next _then_'s failure function (or _catch_)
+
 ### With $q sans a new promise
-With $q, one can reject or resolve in both the success and error portions. Resolves are an input into the next _then_'s success function. Rejects are an input into the next _then_'s failure function (or _catch_)
+With $q, one can reject or resolve in both the success and error portions.
 
     return $http.get('someUrl')
       .then(
@@ -68,6 +79,8 @@ With $q, one can reject or resolve in both the success and error portions. Resol
           }
         }
       );
+
+Resolves are an input into the next _then_'s success function. Rejects are an input into the next _then_'s failure function (or _catch_)
 
 ### Without $q
 If one doesn't need to worry about rejecting within the _success_ function or conversely resolving in the _failure_ function of the _then_ (or catch) method, $q is not needed.
