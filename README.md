@@ -23,3 +23,41 @@ To run the tests:
 - Whether using defer() or not, the _then_ method is still present.
 - It is not necessary to use q.resolve() if one is catching failures with q.reject()
   - not http errors though
+
+## Usages
+
+### With $q to create a new promise
+One often reads that this is an anti-pattern
+
+    var p = $q.defer()
+    $http.get('someUrl')
+      .then(
+        function(response){
+          p.resolve(response.data)
+        },
+        function(err){
+          p.reject(err.status)
+        }
+      )
+    return p.promise;
+
+### With $q sans a new promise
+
+    return $http.get('someUrl')
+      .then(
+        function(response){
+          return response.data
+        },
+        function(err){
+          $q.reject(err.status)
+        }
+      );
+
+### Without $q
+
+    return $http.get('someUrl')
+      .then(
+        function(response){
+          return response.data
+        }
+      );
