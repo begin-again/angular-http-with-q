@@ -88,9 +88,9 @@ If one doesn't need to worry about rejecting within the _success_ function or co
     return $http.get('someUrl')
       .then(
         function(response){
-          return response.data
+          return response.data  // is an input into the next _then_'s success function
         },
         function(err){
-          return err.status
+          return err.status   // is an input into the next _then_'s failure function (or catch)
         }
       );
