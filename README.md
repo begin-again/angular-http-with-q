@@ -66,7 +66,7 @@ With $q, one can reject or resolve in both the success and error portions.
       .then(
         function(response){
           if(response.data === 'xyz') {
-            return response.data;  // will be na input into the _success_ function of the next _then_
+            return response.data;  // will be an input into the _success_ function of the next _then_
           } else {
             $q.reject('not xyz!')
           }
@@ -75,7 +75,7 @@ With $q, one can reject or resolve in both the success and error portions.
           if(err.status !== 500){
             $q.resolve('123')
           } else {
-            return err.status; // will be na input into the _failure_ function of the next _then_
+            return err.status; // will be an input into the _failure_ function of the next _then_
           }
         }
       );
