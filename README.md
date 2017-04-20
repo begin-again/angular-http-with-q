@@ -66,7 +66,7 @@ With $q, one can reject or resolve in both the success and error portions.
       .then(
         function(response){
           if(response.data === 'xyz') {
-            return response.data;
+            return response.data;  // will be na input into the _success_ function of the next _then_
           } else {
             $q.reject('not xyz!')
           }
@@ -75,7 +75,7 @@ With $q, one can reject or resolve in both the success and error portions.
           if(err.status !== 500){
             $q.resolve('123')
           } else {
-            $q.reject(err.status);
+            return err.status; // will be na input into the _failure_ function of the next _then_
           }
         }
       );
@@ -88,9 +88,9 @@ If one doesn't need to worry about rejecting within the _success_ function or co
     return $http.get('someUrl')
       .then(
         function(response){
-          return response.data  // is an input into the next _then_'s success function
+          return response.data  // will be an input into the next _then_'s success function
         },
         function(err){
-          return err.status   // is an input into the next _then_'s failure function (or catch)
+          return err.status   // will be an input into the next _then_'s failure function (or catch)
         }
       );
