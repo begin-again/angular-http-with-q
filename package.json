@@ -1,0 +1,35 @@
+{
+  "name": "insights",
+  "version": "1.0.0",
+  "description": "Usage of $q with $http",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start karma.conf.js"
+  },
+  "keywords": [
+    "angularjs",
+    "promise",
+    "$http",
+    "$q",
+    "karma"
+  ],
+  "author": "todd.hogarth@runbox.com",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/begin-again/angular-http-with-q.git"
+  },
+  "devDependencies": {
+    "angular": "1.5.7",
+    "angular-mocks": "1.5.7",
+    "jasmine": "^2.5.3",
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.4.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.2"
+  }
+}
