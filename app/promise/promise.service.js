@@ -14,12 +14,15 @@
     return service;
 
     function fetch(){
-      return $http.get('/someUrl')
+      var config = {
+        method: 'GET',
+        url: '/someUrl'
+      };
+      return $http(config)
         .then(function(resp){
-          return resp.data;
-        })
-        .catch(function(resp){
-          return resp.data;
+          return 'then';
+        },function(resp){
+          return 'catch';
         });
 
     }

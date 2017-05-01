@@ -25,32 +25,32 @@ describe('$http Promises', function(){
 
       $httpBackend
         .expectGET('/someUrl')
-        .respond(200, 'then');
+        .respond(200);
 
       pf.fetch()
         .then(function(r){
-          response = r;
+          response = 'success ' + r;
         });
 
       expect($httpBackend.flush).not.toThrow();
-      expect(response).toEqual('then');
+      expect(response).toEqual('success then');
     });
     it('should be catch', function(){
 
       $httpBackend
         .expectGET('/someUrl')
-        .respond(501, 'catch');
+        .respond(500);
 
       pf.fetch()
         .then(function(r){
-          response = r;
+          response = 'success '  + r;
         })
         .catch(function(r){
-          response = r
+          response = 'catch ' + r
         });
 
       expect($httpBackend.flush).not.toThrow();
-      expect(response).toEqual('catch');
+      expect(response).toEqual('success catch');
     });
 
   });

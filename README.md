@@ -83,7 +83,7 @@ With $q, one can reject or resolve in both the success and error portions.
 Resolves are an input into the next _then_'s success function. Rejects are an input into the next _then_'s failure function (or _catch_)
 
 ### Without $q
-If one doesn't need to worry about rejecting within the _success_ function or conversely resolving in the _failure_ function of the _then_ (or catch) method, $q is not needed.
+~~If one doesn't need to worry about rejecting within the _success_ function or conversely resolving in the _failure_ function of the _then_ (or catch) method, $q is not needed.~~ Returning a value from either a `then success` *or* `then error` *or* `catch` will always be an input into the next _then_'s success function.
 
     return $http.get('someUrl')
       .then(
@@ -91,6 +91,6 @@ If one doesn't need to worry about rejecting within the _success_ function or co
           return response.data  // will be an input into the next _then_'s success function
         },
         function(err){
-          return err.status   // will be an input into the next _then_'s failure function (or catch)
+          return err.status   // will be an input into the next _then_'s success function
         }
       );

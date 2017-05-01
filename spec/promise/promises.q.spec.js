@@ -253,7 +253,6 @@ describe('$http Promises', function(){
             response = r + isThenReject
           })
           .catch(function(r){
-            console.log('here i am')
             response = r + isCatchReject;
           });
 
@@ -321,7 +320,6 @@ describe('$http Promises', function(){
             response = r + isThenReject
           })
           .catch(function(r){
-            console.log('here I am')
             response = r + isCatchReject;
           });
 
@@ -387,7 +385,6 @@ describe('$http Promises', function(){
           .then(function(r){
             response = r + isThenReject
           },function(r){
-            console.log('here I am')
             response = r + isCatchReject;
           });
 

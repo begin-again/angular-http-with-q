@@ -64,16 +64,13 @@
       // on $q.reject, the catch block will be evaluated
       return $http.get('/someUrl')
         .then(function(resp){
-            console.log('in then', resp.data)
           if(resp.data === 'resolve') {
             return $q.resolve('onSuccess: ' + resp.data);
           } else {
-            console.log('in then reject: ' + resp.data)
             return $q.reject('onSuccess: ' + resp.data);
           }
         })
         .catch(function(resp){
-          console.log('in catch', resp.data ? resp.data : resp)
           if(resp.data){
             if(resp.data === 'resolve') {
               return $q.resolve('onCatch: ' + resp.data);
@@ -97,12 +94,10 @@
             if(resp.data === 'resolve') {
               return $q.resolve('onSuccess: ' + resp.data);
             } else {
-              console.log('in then reject: ' + resp.data)
               return $q.reject('onSuccess: ' + resp.data);
             }
           },
           function(resp){
-            console.log('in error', resp.data ? resp.data : resp)
             if(resp.data){
               if(resp.data === 'resolve') {
                 return $q.resolve('onError: ' + resp.data);
@@ -125,29 +120,22 @@
         .then(
           function(resp){
             if(resp.data === 'reject') {
-              console.log('in then reject: ' + resp.data)
               return $q.reject('onSuccess: ' + resp.data);
             } else {
-              console.log('in then just return: ' + resp.data)
               return 'onSuccess: ' + resp.data;
             }
           },
           function(resp){
-            console.log('in error', resp.data ? resp.data : resp)
             if(resp.data){
               if(resp.data === 'reject') {
-                console.log('in error reject: ' + resp.data)
                 return $q.reject('onError: ' + resp.data);
               } else {
-                console.log('in error resolve: ' + resp.data)
                 return 'onError: ' + resp.data;
               }
             } else {
               if(resp.match(/reject/)) {
-                console.log('in error reject: ' + resp.data)
                 return $q.reject('onError: ' + resp);
               } else {
-                console.log('in error resolve: ' + resp.data)
                 return 'onError: ' + resp;
               }
             }
