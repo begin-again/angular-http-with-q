@@ -36,6 +36,7 @@ The HttpPromise object's then() takes two parameters as shown below. Returning d
 ### With $q to create a new promise
 One often reads that this is an anti-pattern because the defer() is creating a new promise which is not necessary.
 
+```javascript
     var p = $q.defer()
     $http.get('someUrl')
       .then(
@@ -55,13 +56,14 @@ One often reads that this is an anti-pattern because the defer() is creating a n
         }
       )
     return p.promise;
-
+```
 
 Resolves are an input into the next _then's_ success function. Rejects are an input into the next _then's_ failure function (or _catch_)
 
 ### With $q sans a new promise
 With $q, one can reject or resolve in both the success and error portions.
 
+```javascript
     return $http.get('someUrl')
       .then(
         function(response){
@@ -79,12 +81,14 @@ With $q, one can reject or resolve in both the success and error portions.
           }
         }
       );
+```
 
 Resolves are an input into the next _then's_ success function. Rejects are an input into the next _then's_ failure function (or _catch_)
 
 ### Without $q
 If one doesn't need to worry about rejecting within the _success_ function or conversely resolving in the _failure_ function of the _then_ (or catch) method, $q is not needed.~~ Returning a value from either a `then success` _or_ `then error` _or_ `catch` will always be an input into the next _then's_ success function.
 
+```javascript
     return $http.get('someUrl')
       .then(
         function(response){
@@ -94,3 +98,4 @@ If one doesn't need to worry about rejecting within the _success_ function or co
           return err.status   // will be an input into the next _then's_ success function
         }
       );
+```
