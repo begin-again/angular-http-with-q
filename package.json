@@ -20,7 +20,7 @@
     "url": "git+https://github.com/begin-again/angular-http-with-q.git"
   },
   "devDependencies": {
-    "angular": "1.5.7",
+    "angular": "1.6.0",
     "angular-mocks": "1.5.7",
     "jasmine": "^2.5.3",
     "jasmine-core": "^2.5.2",
